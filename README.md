@@ -1,6 +1,6 @@
 # universidade
 
-A new Flutter project.
+Projeto de App com Consumo de API
 
 ## Getting Started
 
