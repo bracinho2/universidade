@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:universidade/src/company/domain/entities/company_entity.dart';
-import 'package:universidade/src/company/infra/repositories/company_repository_impl.dart';
+import 'package:universidade/src/company/domain/usecases/get_all_companies.dart';
 
 class CompanyController extends ChangeNotifier {
-  final CompanyRepositoryImpl _companyRepositoryImpl;
+  final IGetAllCompaniesUseCase _iGetAllCompaniesUseCase;
 
   var isLoading = false;
   var hasData = false;
@@ -11,7 +11,7 @@ class CompanyController extends ChangeNotifier {
 
   List<CompanyEntity> items = [];
 
-  CompanyController(this._companyRepositoryImpl);
+  CompanyController(this._iGetAllCompaniesUseCase);
 
   void update({
     bool isLoading = false,
@@ -27,7 +27,7 @@ class CompanyController extends ChangeNotifier {
   Future<void> fetchData() async {
     try {
       update(isLoading: true);
-      final response = await _companyRepositoryImpl.getAllCompanies();
+      final response = await _iGetAllCompaniesUseCase.call();
       items = response;
       update(hasData: true);
     } catch (e) {

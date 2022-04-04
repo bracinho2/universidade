@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:universidade/src/company/domain/usecases/get_all_companies.dart';
 import 'package:universidade/src/company/external/api/api_datasource_impl.dart';
 import 'package:universidade/src/company/infra/repositories/company_repository_impl.dart';
 import 'package:universidade/src/company/presenter/company_store.dart';
@@ -12,8 +13,8 @@ class CompanyPage extends StatefulWidget {
 }
 
 class _CompanyPageState extends State<CompanyPage> {
-  final controller = CompanyController(
-      CompanyRepositoryImpl(DatasourceImpl(RemoteServiceImpl())));
+  final controller = CompanyController(GetAllCompaniesUsecase(
+      CompanyRepositoryImpl(DatasourceImpl(RemoteServiceImpl()))));
 
   @override
   void initState() {
