@@ -9,7 +9,7 @@ class RemoteServiceImpl implements IRemoteStorageService {
   Future<List<Map<String, dynamic>>> getAllItens() async {
     final Dio _dio = Dio();
 
-    const _baseUrl = 'http://kubolms.com.br/universidade/admin/api/api.php';
+    final _baseUrl = API.url;
     final _jsonRequest = {
       "dominio": API.dominio,
       "senha": API.senha,

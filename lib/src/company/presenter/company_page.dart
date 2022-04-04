@@ -48,6 +48,7 @@ class _CompanyPageState extends State<CompanyPage> {
               itemCount: controller.items.length,
               itemBuilder: (context, index) {
                 final company = controller.items[index];
+                print(company.id);
                 return Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
