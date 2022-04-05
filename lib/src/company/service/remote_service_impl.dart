@@ -5,10 +5,11 @@ import 'package:universidade/src/company/service/remote_service_interface.dart';
 import 'package:universidade/src/keys/api_key.dart';
 
 class RemoteServiceImpl implements IRemoteStorageService {
+  final Dio _dio;
+
+  RemoteServiceImpl(this._dio);
   @override
   Future<List<Map<String, dynamic>>> getAllItens() async {
-    final Dio _dio = Dio();
-
     final _baseUrl = API.url;
     final _jsonRequest = {
       "dominio": API.dominio,

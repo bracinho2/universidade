@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:universidade/src/company/domain/usecases/get_all_companies.dart';
-import 'package:universidade/src/company/external/api/api_datasource_impl.dart';
-import 'package:universidade/src/company/infra/repositories/company_repository_impl.dart';
+import 'package:get_it/get_it.dart';
+
 import 'package:universidade/src/company/presenter/company_store.dart';
-import 'package:universidade/src/company/service/remote_service_impl.dart';
 
 class CompanyPage extends StatefulWidget {
   const CompanyPage({Key? key}) : super(key: key);
@@ -13,8 +11,10 @@ class CompanyPage extends StatefulWidget {
 }
 
 class _CompanyPageState extends State<CompanyPage> {
-  final controller = CompanyController(GetAllCompaniesUsecase(
-      CompanyRepositoryImpl(DatasourceImpl(RemoteServiceImpl()))));
+  final controller = GetIt.instance.get<CompanyController>();
+
+  // CompanyController(GetAllCompaniesUsecase(
+  //     CompanyRepositoryImpl(DatasourceImpl(RemoteServiceImpl(Dio())))));
 
   @override
   void initState() {
