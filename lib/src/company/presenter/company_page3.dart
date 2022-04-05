@@ -13,13 +13,11 @@ class CompanyPageTest extends StatefulWidget {
   State<CompanyPageTest> createState() => _CompanyPageTestState();
 }
 
-class _CompanyPageTestState extends State<CompanyPageTest> {
+class _CompanyPageTestState extends State<CompanyPageTest>
+    with CompleteStateMixin<CompanyPageTest> {
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      context.read<CompanyController>().fetchData();
-    });
+  void completeState() {
+    context.read<CompanyController>().fetchData();
   }
 
   @override

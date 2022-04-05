@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:universidade/src/company/company_module.dart';
-import 'package:universidade/src/company/presenter/company_page.dart';
 import 'package:universidade/src/company/presenter/company_page2.dart';
 
 class AppWidget extends StatelessWidget {

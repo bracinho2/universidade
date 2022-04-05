@@ -21,6 +21,7 @@ class CompanyController extends ChangeNotifier {
     this.isLoading = isLoading;
     this.hasData = hasData;
     this.hasError = hasError;
+
     notifyListeners();
   }
 
