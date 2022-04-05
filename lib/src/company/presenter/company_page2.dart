@@ -14,6 +14,16 @@ class CompanyPageTest extends StatefulWidget {
 }
 
 class _CompanyPageTestState extends State<CompanyPageTest> {
+//Dica para quem usa provider com change notifier
+//ao chamar o controller ele conflita com o notifyListers por conta
+//da sincronicidade da construcao do widget e a atualizacao do mesmo.
+//Chamem o WidgetBinding e ele vai chamar o controller apenas depois de construir
+//o widget. É uma solucao interessante especialmente para os iniciantes
+//Obrigado:
+//Jacob
+//Dani Fernandes
+//Jessica
+
   @override
   void initState() {
     super.initState();
@@ -21,6 +31,10 @@ class _CompanyPageTestState extends State<CompanyPageTest> {
       context.read<CompanyController>().fetchData();
     });
   }
+
+  //bracinho
+  //iniciante em flutter
+  //Sulina/Toledo-PR
 
   @override
   void dispose() {
@@ -75,17 +89,5 @@ class _CompanyPageTestState extends State<CompanyPageTest> {
         companyController.fetchData();
       }),
     );
-  }
-}
-
-mixin CompleteStateMixin<T extends StatefulWidget> on State<T> {
-  void completeState();
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      completeState();
-    });
   }
 }
