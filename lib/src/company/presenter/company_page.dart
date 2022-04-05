@@ -13,9 +13,6 @@ class CompanyPage extends StatefulWidget {
 class _CompanyPageState extends State<CompanyPage> {
   final controller = GetIt.instance.get<CompanyController>();
 
-  // CompanyController(GetAllCompaniesUsecase(
-  //     CompanyRepositoryImpl(DatasourceImpl(RemoteServiceImpl(Dio())))));
-
   @override
   void initState() {
     controller.fetchData();
