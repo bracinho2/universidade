@@ -16,18 +16,13 @@ class _CompanyPageState extends State<CompanyPage> {
   @override
   void initState() {
     controller.fetchData();
-    controller.addListener(listener);
+
     super.initState();
   }
 
   @override
   void dispose() {
-    controller.removeListener(listener);
     super.dispose();
-  }
-
-  void listener() {
-    setState(() {});
   }
 
   @override
