@@ -15,8 +15,11 @@ class RemoteServiceImpl implements IRemoteStorageService {
     final _jsonRequest = APIRoutes.listarEmpresas;
 
     final response = await _dio.post(_baseUrl, data: _jsonRequest);
+
+    //dados da API
     final values = List<Map<String, dynamic>>.from(jsonDecode(response.data));
 
+    //dados para teste;
     final mockvalues = [
       {"id": "1", "empresa": "Sulina 01", "cnpj": "1234"},
       {"id": "2", "empresa": "Sulina 01", "cnpj": "5678"},

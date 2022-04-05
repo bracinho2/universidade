@@ -4,18 +4,18 @@ import 'package:provider/provider.dart';
 
 import 'package:universidade/src/company/presenter/company_store.dart';
 
-class CompanyPage extends StatefulWidget {
-  const CompanyPage({Key? key}) : super(key: key);
+class CompanyPageTest extends StatefulWidget {
+  const CompanyPageTest({Key? key}) : super(key: key);
 
   @override
-  State<CompanyPage> createState() => _CompanyPageState();
+  State<CompanyPageTest> createState() => _CompanyPageTestState();
 }
 
-class _CompanyPageState extends State<CompanyPage> {
+class _CompanyPageTestState extends State<CompanyPageTest> {
+  late CompanyController companyController;
+
   @override
   void initState() {
-    //controller.fetchData();
-
     super.initState();
   }
 
@@ -26,21 +26,22 @@ class _CompanyPageState extends State<CompanyPage> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<CompanyController>(context);
+    companyController = context.watch<CompanyController>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Companies'),
       ),
       body: AnimatedBuilder(
-        animation: controller,
-        builder: (_, __) {
-          if (controller.isLoading) {
+        animation: companyController,
+        builder: (context, __) {
+          if (companyController.isLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (controller.hasData) {
+          } else if (companyController.hasData) {
             return ListView.builder(
-              itemCount: controller.items.length,
+              itemCount: companyController.items.length,
               itemBuilder: (context, index) {
-                final company = controller.items[index];
+                final company = companyController.items[index];
                 print(company.id);
                 return Padding(
                   padding: const EdgeInsets.symmetric(
@@ -61,13 +62,16 @@ class _CompanyPageState extends State<CompanyPage> {
                 );
               },
             );
-          } else if (controller.hasError) {
+          } else if (companyController.hasError) {
             return const Center(child: Text('Ooops...'));
           } else {
             return const Center(child: Text('Bah!'));
           }
         },
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        companyController.fetchData();
+      }),
     );
   }
 }
