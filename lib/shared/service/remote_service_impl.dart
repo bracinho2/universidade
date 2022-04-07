@@ -1,20 +1,22 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:universidade/core/api_router.dart';
-import 'package:universidade/src/company/service/remote_service_interface.dart';
+
+import 'package:universidade/shared/service/remote_service_interface.dart';
 import 'package:universidade/src/keys/api_key.dart';
 
-class RemoteServiceImpl implements IRemoteStorageService {
+class RemoteServiceImpl implements IRemoteStorageServiceAPI {
   final Dio _dio;
 
   RemoteServiceImpl(this._dio);
-  @override
-  Future<List<Map<String, dynamic>>> getAllItens() async {
-    final _baseUrl = API.url;
-    final _jsonRequest = APIRoutes.listarEmpresas;
 
-    final response = await _dio.post(_baseUrl, data: _jsonRequest);
+  @override
+  Future<List<Map<String, dynamic>>> getAllItens(
+      {required Map<String, dynamic> map}) async {
+    final _baseUrl = API.url;
+    final _jsonRequest = map;
+
+    final response = await _dio.post(_baseUrl, data: map);
 
     //dados da API
     final values = List<Map<String, dynamic>>.from(jsonDecode(response.data));
@@ -26,6 +28,6 @@ class RemoteServiceImpl implements IRemoteStorageService {
       {"id": "3", "empresa": "Sulina 01", "cnpj": "1234"},
     ];
 
-    return mockvalues;
+    return values;
   }
 }

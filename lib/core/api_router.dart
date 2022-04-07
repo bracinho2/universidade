@@ -26,4 +26,19 @@ class APIRoutes {
     "classe": "treinamento",
     "metodo": "listar"
   };
+
+  static Map<String, dynamic> listarEmpresasCNPJ = {
+    "dominio": API.dominio,
+    "senha": API.senha,
+    "classe": "empresa",
+    "metodo": "listar_por_cnpj",
+    "cnpj": "08.695.361/0001-01"
+  };
+
+  static Map<String, dynamic> listarAlunos = {
+    "dominio": API.dominio,
+    "senha": API.senha,
+    "classe": "aluno",
+    "metodo": "listar"
+  };
 }

@@ -4,37 +4,20 @@ import 'package:provider/provider.dart';
 
 import 'package:universidade/src/company/presenter/company_store.dart';
 
-class CompanyPageTest extends StatefulWidget {
-  const CompanyPageTest({
-    Key? key,
-  }) : super(key: key);
+class CompanyPage extends StatefulWidget {
+  const CompanyPage({Key? key}) : super(key: key);
 
   @override
-  State<CompanyPageTest> createState() => _CompanyPageTestState();
+  State<CompanyPage> createState() => _CompanyPageState();
 }
 
-class _CompanyPageTestState extends State<CompanyPageTest> {
-//Dica para quem usa provider com change notifier
-//ao chamar o controller ele conflita com o notifyListers por conta
-//da sincronicidade da construcao do widget e a atualizacao do mesmo.
-//Chamem o WidgetBinding e ele vai chamar o controller apenas depois de construir
-//o widget. É uma solucao interessante especialmente para os iniciantes
-//Obrigado:
-//Jacob
-//Dani Fernandes
-//Jessica
-
+class _CompanyPageState extends State<CompanyPage> {
   @override
   void initState() {
-    super.initState();
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      context.read<CompanyController>().fetchData();
-    });
-  }
+    //controller.fetchData();
 
-  //bracinho
-  //iniciante em flutter
-  //Sulina/Toledo-PR
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -43,21 +26,21 @@ class _CompanyPageTestState extends State<CompanyPageTest> {
 
   @override
   Widget build(BuildContext context) {
-    final companyController = context.watch<CompanyController>();
+    final controller = Provider.of<CompanyController>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Companies'),
       ),
       body: AnimatedBuilder(
-        animation: companyController,
-        builder: (context, __) {
-          if (companyController.isLoading) {
+        animation: controller,
+        builder: (_, __) {
+          if (controller.isLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (companyController.hasData) {
+          } else if (controller.hasData) {
             return ListView.builder(
-              itemCount: companyController.items.length,
+              itemCount: controller.items.length,
               itemBuilder: (context, index) {
-                final company = companyController.items[index];
+                final company = controller.items[index];
                 print(company.id);
                 return Padding(
                   padding: const EdgeInsets.symmetric(
@@ -73,22 +56,18 @@ class _CompanyPageTestState extends State<CompanyPageTest> {
                     onTap: () {
                       print(company.id);
                       print(company.cnpj);
-                      print(company.toString());
                     },
                   ),
                 );
               },
             );
-          } else if (companyController.hasError) {
+          } else if (controller.hasError) {
             return const Center(child: Text('Ooops...'));
           } else {
             return const Center(child: Text('Bah!'));
           }
         },
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        companyController.fetchData();
-      }),
     );
   }
 }
