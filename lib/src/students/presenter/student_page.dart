@@ -41,22 +41,22 @@ class _StudentPageState extends State<StudentPage> {
             return ListView.builder(
               itemCount: studentStore.items.length,
               itemBuilder: (context, index) {
-                final company = studentStore.items[index];
-                print(company.id);
+                final student = studentStore.items[index];
+                print(student.id);
                 return Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 5,
                   ),
                   child: ListTile(
-                    title: Text(company.name),
-                    subtitle: Text(company.cpf),
+                    title: Text(student.name),
+                    subtitle: Text(student.cpf),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     onTap: () {
-                      print(company.id);
-                      print(company.cpf);
+                      print(student.id);
+                      print(student.cpf);
                     },
                   ),
                 );

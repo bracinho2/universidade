@@ -1,4 +1,3 @@
-import 'package:universidade/src/company/domain/entities/company_entity.dart';
 import 'package:universidade/src/students/domain/entities/student_entity.dart';
 
 class StudentMapper extends StudentEntity {
@@ -32,7 +31,7 @@ class StudentMapper extends StudentEntity {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is CompanyEntity && other.id == id;
+    return other is StudentEntity && other.id == id;
   }
 
   @override

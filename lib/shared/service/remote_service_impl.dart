@@ -28,6 +28,6 @@ class RemoteServiceImpl implements IRemoteStorageServiceAPI {
       {"id": "3", "empresa": "Sulina 01", "cnpj": "1234"},
     ];
 
-    return values;
+    return mockvalues;
   }
 }

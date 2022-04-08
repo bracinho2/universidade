@@ -10,7 +10,8 @@ class StudentDatasourceImpl implements IStudentDatasource {
   @override
   Future<List<Map<String, dynamic>>> getAllStudents() async {
     final response = await _iRemoteStorageServiceAPI.getAllItens(
-        map: APIRoutes.listarEmpresas);
+        map: APIRoutes.listarAlunos);
+
     return response;
   }
 }
