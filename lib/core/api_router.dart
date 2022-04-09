@@ -41,4 +41,11 @@ class APIRoutes {
     "classe": "aluno",
     "metodo": "listar"
   };
+
+  static Map<String, dynamic> consultaUsuario = {
+    "dominio": API.dominio,
+    "senha": API.senha,
+    "classe": "usuario",
+    "metodo": "listar"
+  };
 }

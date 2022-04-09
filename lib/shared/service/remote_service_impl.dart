@@ -14,7 +14,6 @@ class RemoteServiceImpl implements IRemoteStorageServiceAPI {
   Future<List<Map<String, dynamic>>> getAllItens(
       {required Map<String, dynamic> map}) async {
     final _baseUrl = API.url;
-    final _jsonRequest = map;
 
     final response = await _dio.post(_baseUrl, data: map);
 
@@ -28,6 +27,6 @@ class RemoteServiceImpl implements IRemoteStorageServiceAPI {
       {"id": "3", "empresa": "Sulina 01", "cnpj": "1234"},
     ];
 
-    return mockvalues;
+    return values;
   }
 }
