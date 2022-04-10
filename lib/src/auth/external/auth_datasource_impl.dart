@@ -8,7 +8,7 @@ class AuthDatasourceImpl implements IAuthDatasource {
       'id': '1',
       'usuario': 'teste',
       'senha': 'teste',
-      'empresa': '1',
+      'empresa': '3',
       'perfil': 'gerente'
     };
 

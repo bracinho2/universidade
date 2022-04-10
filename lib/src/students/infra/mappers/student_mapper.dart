@@ -4,11 +4,15 @@ class StudentMapper extends StudentEntity {
   StudentMapper({
     required String id,
     required String name,
+    required String sobrenome,
     required String cpf,
+    required String empresa,
   }) : super(
           id: id,
           name: name,
+          sobrenome: sobrenome,
           cpf: cpf,
+          empresa: empresa,
         );
 
   static Map<String, dynamic> toMap(StudentEntity entity) {
@@ -16,6 +20,7 @@ class StudentMapper extends StudentEntity {
       'id': entity.id,
       'nome': entity.name,
       'cpf': entity.cpf,
+      'empresa': entity.empresa,
     };
   }
 
@@ -23,7 +28,9 @@ class StudentMapper extends StudentEntity {
     return StudentMapper(
       id: map['id'] ?? '',
       name: map['nome'] ?? '',
+      sobrenome: map['sobrenome'] ?? '',
       cpf: map['cpf'] ?? '',
+      empresa: map['empresa'] ?? '',
     );
   }
 

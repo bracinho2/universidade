@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:universidade/src/performance/presenter/page/performance_page.dart';
-import 'package:universidade/src/students/presenter/company_store.dart';
+import 'package:universidade/src/performance/presenter/store/performance_store.dart';
+import 'package:universidade/src/students/domain/entities/student_entity.dart';
 
-class StudentPage extends StatefulWidget {
-  const StudentPage({
+class PerformancePage extends StatefulWidget {
+  final StudentEntity? student;
+  const PerformancePage({
     Key? key,
+    this.student,
   }) : super(key: key);
 
   @override
-  State<StudentPage> createState() => _StudentPageState();
+  State<PerformancePage> createState() => _PerformancePageState();
 }
 
-class _StudentPageState extends State<StudentPage> {
+class _PerformancePageState extends State<PerformancePage> {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      context.read<StudentStore>().fetchData();
+      context.read<PerformanceStore>().fetchData();
     });
   }
 
@@ -28,45 +30,42 @@ class _StudentPageState extends State<StudentPage> {
 
   @override
   Widget build(BuildContext context) {
-    final studentStore = context.watch<StudentStore>();
+    final performanceStore = context.watch<PerformanceStore>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Students'),
+        title: const Text('Performances'),
       ),
       body: AnimatedBuilder(
-        animation: studentStore,
+        animation: performanceStore,
         builder: (context, __) {
-          if (studentStore.isLoading) {
+          if (performanceStore.isLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (studentStore.hasData) {
+          } else if (performanceStore.hasData) {
             return ListView.builder(
-              itemCount: studentStore.items.length,
+              itemCount: performanceStore.filteredItems.length,
               itemBuilder: (context, index) {
-                final student = studentStore.items[index];
+                final performance = performanceStore.filteredItems[index];
+
                 return Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
                     vertical: 5,
                   ),
                   child: ListTile(
-                    title: Text(student.name + ' ' + student.sobrenome),
-                    subtitle: Text(student.cpf + ' - ' + student.empresa),
+                    title: Text(performance.aluno),
+                    subtitle: Text(performance.treinamento),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     onTap: () {
-                      print('ID do Estudante: ' + student.id);
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => PerformancePage(student: student),
-                          ));
+                      print('Nome do Estudante: ' + performance.aluno);
                     },
+                    trailing: Text(performance.nota.toString()),
                   ),
                 );
               },
             );
-          } else if (studentStore.hasError) {
+          } else if (performanceStore.hasError) {
             return const Center(child: Text('Ooops...'));
           } else {
             return const Center(child: Text('Bah!'));
@@ -74,7 +73,7 @@ class _StudentPageState extends State<StudentPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
-        studentStore.fetchData();
+        performanceStore.fetchData();
       }),
     );
   }

@@ -17,7 +17,6 @@ class RemoteServiceImpl implements IRemoteStorageServiceAPI {
 
     final response = await _dio.post(_baseUrl, data: map);
 
-    //dados da API
     final values = List<Map<String, dynamic>>.from(jsonDecode(response.data));
 
     //dados para teste;

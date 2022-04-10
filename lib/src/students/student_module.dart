@@ -15,7 +15,8 @@ final studentModule = [
   Provider<IStudentDatasource>(
       create: (context) => StudentDatasourceImpl(context.read())),
   Provider<IStudentRepository>(
-      create: (context) => StudentRepositoryImpl(context.read())),
+      create: (context) =>
+          StudentRepositoryImpl(context.read(), context.read())),
   Provider<IGetAllStudentUseCase>(
       create: (context) => GetAllStudentUsecase(context.read())),
   ChangeNotifierProvider(create: (context) => StudentStore(context.read())),

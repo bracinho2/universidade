@@ -6,6 +6,7 @@ import 'package:universidade/shared/shared_preferences/local_storage_service_int
 import 'package:universidade/src/auth/auth_module.dart';
 import 'package:universidade/src/authentication/auth_controller_save_local_user.dart';
 import 'package:universidade/src/company/company_module.dart';
+import 'package:universidade/src/performance/performance_module.dart';
 import 'package:universidade/src/splash/splash_page.dart';
 import 'package:universidade/src/students/student_module.dart';
 
@@ -23,6 +24,7 @@ class AppWidget extends StatelessWidget {
         ...companyModule,
         ...studentModule,
         ...authModule,
+        ...performanceModule,
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

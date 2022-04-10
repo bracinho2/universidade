@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:universidade/shared/shared_preferences/local_storage_service_interface.dart';
+import 'package:universidade/src/auth/domain/entities/logged_user.dart';
 import 'package:universidade/src/auth/infra/mapppers/auth_mappers.dart';
 import 'package:universidade/src/auth/presenter/page/login_page.dart';
 import 'package:universidade/src/home/home_page.dart';
@@ -43,5 +44,15 @@ class AuthenticationController {
     _sharedPreferencesService.remove(info: 'user');
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (_) => const LoginPage()));
+  }
+
+  Future<LoggedUser?> loadSavedUser() async {
+    var user = await _sharedPreferencesService.load(info: 'user');
+
+    if (user != null) {
+      _user = LoggedUserMapper.fromJson(user);
+    }
+
+    return _user;
   }
 }

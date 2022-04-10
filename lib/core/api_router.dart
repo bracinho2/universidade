@@ -48,4 +48,16 @@ class APIRoutes {
     "classe": "usuario",
     "metodo": "listar"
   };
+
+  static Map<String, dynamic> consultaDesempenhoAluno({
+    required String idAluno,
+  }) {
+    return {
+      "dominio": API.dominio,
+      "senha": API.senha,
+      "classe": "desempenho",
+      "metodo": "listarTreinamentosFinalizadosAluno",
+      "id_aluno": "7"
+    };
+  }
 }
