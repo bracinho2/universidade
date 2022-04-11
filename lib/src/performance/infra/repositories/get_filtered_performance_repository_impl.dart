@@ -1,7 +1,7 @@
 import 'package:universidade/src/performance/domain/entities/performance_entity.dart';
 import 'package:universidade/src/performance/domain/repositories/get_filtered_performances_repository_interface.dart';
 import 'package:universidade/src/performance/infra/datasource/get_filtered_performance_datasource_interface.dart';
-import 'package:universidade/src/performance/infra/mappers/performance_mappers.dart';
+import 'package:universidade/src/performance/infra/mappers/completed_performance_mappers.dart';
 
 class GetFilteredPerformanceRepositoryImpl
     implements IGetFilteredPerformanceRepository {
@@ -20,7 +20,7 @@ class GetFilteredPerformanceRepositoryImpl
     final List<PerformanceEntity> list = [];
 
     for (var element in response) {
-      final performance = PerformanceMapper.fromMap(element);
+      final performance = CompletedPerformanceMapper.fromMap(element);
       list.add(performance);
     }
 

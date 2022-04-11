@@ -1,7 +1,7 @@
 import 'package:universidade/src/performance/domain/entities/performance_entity.dart';
 
-class PerformanceMapper extends PerformanceEntity {
-  PerformanceMapper({
+class CompletedPerformanceMapper extends PerformanceEntity {
+  CompletedPerformanceMapper({
     required String aluno,
     required String treinamento,
     required DateTime? dataInicial,
@@ -25,8 +25,8 @@ class PerformanceMapper extends PerformanceEntity {
     };
   }
 
-  factory PerformanceMapper.fromMap(Map<String, dynamic> map) {
-    return PerformanceMapper(
+  factory CompletedPerformanceMapper.fromMap(Map<String, dynamic> map) {
+    return CompletedPerformanceMapper(
       aluno: map['nome'] ?? '',
       treinamento: map['treinamento'] ?? '',
       dataInicial: map['dataInicial'] != null
