@@ -49,15 +49,22 @@ class APIRoutes {
     "metodo": "listar"
   };
 
+  static Map<String, dynamic> consultaDesempenhoGeral = {
+    "dominio": "insidesistemas",
+    "senha": "*tjZl\$a^Zs9A",
+    "classe": "desempenho",
+    "metodo": "listar"
+  };
+
   static Map<String, dynamic> consultaDesempenhoAluno({
-    required String idAluno,
+    required String filter,
   }) {
     return {
       "dominio": API.dominio,
       "senha": API.senha,
       "classe": "desempenho",
       "metodo": "listarTreinamentosFinalizadosAluno",
-      "id_aluno": "7"
+      "id_aluno": filter
     };
   }
 }

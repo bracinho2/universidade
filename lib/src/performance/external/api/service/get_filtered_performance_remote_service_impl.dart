@@ -1,26 +1,18 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:universidade/src/keys/api_key.dart';
-import 'package:universidade/src/performance/external/api/service/performance_remote_service_interface.dart';
+import 'package:universidade/src/performance/external/api/service/get_filtered_performance_remote_service_interface.dart';
 
-class PerformanceRemoteServiceImpl
-    implements IRemoteStorageServicePerformanceAPI {
+class GetFilteredPerformanceRemoteStorageImpl
+    implements IGetFilteredPerformanceRemoteStorage {
   final Dio _dio;
 
-  PerformanceRemoteServiceImpl(this._dio);
+  GetFilteredPerformanceRemoteStorageImpl(this._dio);
 
   @override
   Future<List<Map<String, dynamic>>> getAllItens(
       {required Map<String, dynamic> map}) async {
     final _baseUrl = API.url;
-
-    final mapa = {
-      "dominio": API.dominio,
-      "senha": API.senha,
-      "classe": "desempenho",
-      "metodo": "listarTreinamentosFinalizadosAluno",
-      "id_aluno": "7"
-    };
 
     final response = await _dio.post(_baseUrl, data: map);
 

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class PerformanceEntity {
   final String aluno;
   final String treinamento;

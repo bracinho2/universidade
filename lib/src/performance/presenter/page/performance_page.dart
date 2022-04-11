@@ -19,7 +19,15 @@ class _PerformancePageState extends State<PerformancePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      context.read<PerformanceStore>().fetchData();
+      if (widget.student != null) {
+        context
+            .read<PerformanceStore>()
+            .fetchDataByID(filter: widget.student!.id);
+        print('Tem ID de Aluno');
+      } else {
+        context.read<PerformanceStore>().fetchData();
+        print('Não tem ID de Aluno');
+      }
     });
   }
 
@@ -73,7 +81,7 @@ class _PerformancePageState extends State<PerformancePage> {
         },
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
-        performanceStore.fetchData();
+        performanceStore.fetchDataByID(filter: widget.student!.id);
       }),
     );
   }
