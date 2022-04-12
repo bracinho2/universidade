@@ -26,9 +26,10 @@ class AppWidget extends StatelessWidget {
         ...authModule,
         ...performanceModule,
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
+        theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
-        home: Splash(),
+        home: const Splash(),
       ),
     );
   }

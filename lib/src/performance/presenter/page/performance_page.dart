@@ -74,7 +74,21 @@ class _PerformancePageState extends State<PerformancePage> {
               },
             );
           } else if (performanceStore.hasError) {
-            return const Center(child: Text('Ooops...'));
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Center(
+                  child: Text(
+                    'Snif...\no aluno não finalizou nenhum treinamento!\n :(',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            );
           } else {
             return const Center(child: Text('Bah!'));
           }

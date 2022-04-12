@@ -49,11 +49,33 @@ class _StudentPageState extends State<StudentPage> {
                     vertical: 5,
                   ),
                   child: ListTile(
-                    title: Text(student.name + ' ' + student.sobrenome),
-                    subtitle: Text(student.cpf + ' - ' + student.empresa),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
+                    title: Text(
+                      student.name,
+                      style: const TextStyle(
+                        fontSize: 14.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
+                    subtitle: Text(
+                      student.sobrenome,
+                    ),
+                    trailing: Text(
+                      '# ' + student.id,
+                      style: const TextStyle(
+                        fontSize: 14.0,
+                        color: Colors.green,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8),
+                      ),
+                    ),
+                    tileColor: Colors.white12,
+                    selectedTileColor: Colors.black,
+                    selectedColor: Colors.amber,
                     onTap: () {
                       print('ID do Estudante: ' + student.id);
                       Navigator.push(
@@ -67,7 +89,15 @@ class _StudentPageState extends State<StudentPage> {
               },
             );
           } else if (studentStore.hasError) {
-            return const Center(child: Text('Ooops...'));
+            return const Center(
+              child: Text(
+                'Ooops...',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            );
           } else {
             return const Center(child: Text('Bah!'));
           }
