@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:universidade/src/performance/domain/entities/performance_entity.dart';
 
 class CompletedPerformanceMapper extends PerformanceEntity {
