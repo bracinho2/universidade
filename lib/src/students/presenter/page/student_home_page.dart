@@ -36,7 +36,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
 
     if (state is EmptyStudentState) {
       child = const Center(
-        child: Text('Não existem Produtos Cadastrados!'),
+        child: Text('Não existem Estudantes Cadastrados!'),
       );
     }
     if (state is LoadingStudentState) {
