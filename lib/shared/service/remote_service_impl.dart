@@ -20,11 +20,11 @@ class RemoteServiceImpl implements IRemoteStorageServiceAPI {
     final values = List<Map<String, dynamic>>.from(jsonDecode(response.data));
 
     //dados para teste;
-    final mockvalues = [
-      {"id": "1", "empresa": "Sulina 01", "cnpj": "1234"},
-      {"id": "2", "empresa": "Sulina 01", "cnpj": "5678"},
-      {"id": "3", "empresa": "Sulina 01", "cnpj": "1234"},
-    ];
+    // final mockvalues = [
+    //   {"id": "1", "empresa": "Sulina 01", "cnpj": "1234"},
+    //   {"id": "2", "empresa": "Sulina 01", "cnpj": "5678"},
+    //   {"id": "3", "empresa": "Sulina 01", "cnpj": "1234"},
+    // ];
 
     return values;
   }

@@ -8,6 +8,7 @@ import 'package:universidade/src/students/external/api/api_datasource_impl.dart'
 import 'package:universidade/src/students/infra/datasource/student_datasource.dart';
 import 'package:universidade/src/students/infra/repositories/student_repository_impl.dart';
 import 'package:universidade/src/students/presenter/company_store.dart';
+import 'package:universidade/src/students/presenter/store/student_store.dart';
 
 final studentModule = [
   Provider<IRemoteStorageServiceAPI>(
@@ -20,4 +21,7 @@ final studentModule = [
   Provider<IGetAllStudentUseCase>(
       create: (context) => GetAllStudentUsecase(context.read())),
   ChangeNotifierProvider(create: (context) => StudentStore(context.read())),
+
+  //teste de bloc
+  ChangeNotifierProvider(create: (context) => StudentHomeStore(context.read())),
 ];
