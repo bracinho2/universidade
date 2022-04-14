@@ -3,7 +3,7 @@ import 'package:universidade/src/students/domain/entities/student_entity.dart';
 
 import 'package:universidade/src/students/domain/usecases/get_all_students.dart';
 
-class StudentStore extends ChangeNotifier {
+class StudentStoreChangeNotifier extends ChangeNotifier {
   final IGetAllStudentUseCase _iGetAllStudentUseCase;
 
   var isLoading = false;
@@ -12,7 +12,7 @@ class StudentStore extends ChangeNotifier {
 
   List<StudentEntity> items = [];
 
-  StudentStore(this._iGetAllStudentUseCase);
+  StudentStoreChangeNotifier(this._iGetAllStudentUseCase);
 
   void update({
     bool isLoading = false,

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:universidade/src/authentication/auth_controller_save_local_user.dart';
 import 'package:universidade/src/performance/presenter/page/performance_page.dart';
+import 'package:universidade/src/students/presenter_bloc/page/student_home_page_bloc.dart';
+import 'package:universidade/src/students/presenter_changenotifier/student_page_change_notifier.dart';
+import 'package:universidade/src/students/presenter_valuenotifier/page/student_home_page_value_notifier.dart';
 import '../company/presenter/company_page2.dart';
-import '../students/presenter/page/student_home_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,10 +29,34 @@ class HomePage extends StatelessWidget {
           Center(
             child: TextButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const StudentHomePage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const StudentPageChangeNotifier()));
               },
-              child: const Text('Students'),
+              child: const Text('Change Notifier - Students'),
+            ),
+          ),
+          Center(
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const StudentHomePageValueNotifier()));
+              },
+              child: const Text('Value Notifier - Students'),
+            ),
+          ),
+          Center(
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const StudentHomePageBloc()));
+              },
+              child: const Text('Bloc - Students'),
             ),
           ),
           Center(

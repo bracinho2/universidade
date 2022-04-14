@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:universidade/src/students/states/student_state.dart';
-
 import '../../domain/usecases/get_all_students.dart';
+import '../states/student_state_value_notifier.dart';
 
-class StudentHomeStore extends ValueNotifier<StudentState> {
+class StudentHomeStoreValueNotifier
+    extends ValueNotifier<StudentStateValueNotifier> {
   final IGetAllStudentUseCase _iGetAllStudentUseCase;
-  StudentHomeStore(
+  StudentHomeStoreValueNotifier(
     this._iGetAllStudentUseCase,
   ) : super(EmptyStudentState());
 

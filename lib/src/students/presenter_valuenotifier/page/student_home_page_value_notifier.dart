@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:universidade/src/performance/presenter/page/performance_page.dart';
-import 'package:universidade/src/students/presenter/store/student_store.dart';
-import 'package:universidade/src/students/states/student_state.dart';
+import 'package:universidade/src/students/presenter_valuenotifier/states/student_state_value_notifier.dart';
+import 'package:universidade/src/students/presenter_valuenotifier/store/student_store.dart';
 
-class StudentHomePage extends StatefulWidget {
-  const StudentHomePage({
+class StudentHomePageValueNotifier extends StatefulWidget {
+  const StudentHomePageValueNotifier({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<StudentHomePage> createState() => _StudentHomePageState();
+  State<StudentHomePageValueNotifier> createState() =>
+      _StudentHomePageValueNotifierState();
 }
 
-class _StudentHomePageState extends State<StudentHomePage> {
+class _StudentHomePageValueNotifierState
+    extends State<StudentHomePageValueNotifier> {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      context.read<StudentHomeStore>().fetchStudents();
+      context.read<StudentHomeStoreValueNotifier>().fetchStudents();
     });
   }
 
@@ -29,7 +31,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final store = context.watch<StudentHomeStore>();
+    final store = context.watch<StudentHomeStoreValueNotifier>();
     Widget child = Container();
 
     final state = store.value;
@@ -103,7 +105,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Students'),
+        title: const Text('Students - ValueNotifier'),
       ),
       body: child,
     );
