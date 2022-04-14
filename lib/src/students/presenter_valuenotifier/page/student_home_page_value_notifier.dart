@@ -28,7 +28,7 @@ class _StudentHomePageValueNotifierState
 
   @override
   Widget build(BuildContext context) {
-    final store = context.watch<StudentHomeStoreValueNotifier>();
+    final store = context.read<StudentHomeStoreValueNotifier>();
 
     return Scaffold(
       appBar: AppBar(
