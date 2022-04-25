@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:universidade/shared/snack_manager/snack_manager.dart';
 import 'package:universidade/src/authentication/auth_controller_save_local_user.dart';
 import 'package:universidade/src/performance/presenter/page/performance_page.dart';
 import 'package:universidade/src/students/presenter_bloc/page/student_home_page_bloc.dart';
@@ -80,6 +81,12 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        SnackBarManager().showWarning(
+          context: context,
+          message: 'sucesso',
+        );
+      }),
     );
   }
 }
