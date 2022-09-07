@@ -50,8 +50,8 @@ class APIRoutes {
   };
 
   static Map<String, dynamic> consultaDesempenhoGeral = {
-    "dominio": "insidesistemas",
-    "senha": "*tjZl\$a^Zs9A",
+    "dominio": API.dominio,
+    "senha": API.senha,
     "classe": "desempenho",
     "metodo": "listar"
   };
